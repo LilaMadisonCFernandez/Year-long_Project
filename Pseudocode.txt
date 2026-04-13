@@ -1,0 +1,200 @@
+﻿START
+
+
+Load JSON file containing the data for transportation
+
+
+WHILE TRUE:
+    DISPLAY Main Menu:
+        “1. Display Transport Data”
+        ”2. Add Trip”
+        “3. Update Trip”
+        “4. Delete Trip”
+        “5. Features”
+        “6. Exit”
+
+
+    INPUT choice
+
+
+    IF choice = 6:
+        DISPLAY "Exiting program"
+        BREAK
+
+
+    # DISPLAY
+    ELIF choice == “1”:
+        GET transport data
+        PRINT “Trip List”
+        IF data exists:
+            FOR each trip in database:
+                DISPLAY trip details
+        ELSE:
+            DISPLAY “No transport data available.”
+  
+   # ADD
+   ELIF choice == “2”:
+        INPUT trip details
+        ADD trip details to database
+        DISPLAY “Trip added successfully”
+
+
+   # UPDATE
+   ELIF choice == “3”:
+        INPUT trip_to_update
+        GET trip from database
+        IF trip_to_update TRUE:
+            INPUT new trip details
+            ADD new trip details to database
+            DISPLAY “Trip updated successfully”
+        ELSE:
+            DISPLAY “Trip not found”
+
+
+   # DELETE
+   ELIF choice == “4”:
+        INPUT trip_id
+        IF trip_id TRUE:
+            DELETE trip
+            DISPLAY “Trip deleted successfully”
+        ELSE:
+            DISPLAY “Trip not found”
+
+
+   # FEATURES
+   ELIF choice == “5”:
+        WHILE TRUE:
+            DISPLAY Features Menu:
+            “1. Summarize and display a bus operator's trips' status
+            ”2. Summarize and display trip data for a destination
+            “3. Display schedules for a city”
+            “4. Display fares for a trip”
+            “5. Display bus details of a trip”
+            “6. Exit”
+
+
+             INPUT feature_choice
+
+
+             IF feature_choice == “6”:
+                DISPLAY “Exiting Program.”
+                BREAK
+
+
+             GET transport data = current_transport_data_dict
+             current_transport_list = []
+             IF current_transport_data_dict:
+                current_transport_list = list(current_transport_data_dict.values())
+
+
+             # FEATURE 1
+             IF feature_choice == “1”:
+                WHILE TRUE: 
+                      INPUT bus_operator         #(0 to exit)
+                      IF bus_operator == “0”
+                         BREAK
+
+
+                      Found_operator = FALSE
+                      FOR trip_item in current_transport_list:
+                         IF bus_operator in data base:
+                             Found_operator = TRUE
+                             BREAK
+
+
+                      IF Found_operator:
+                         DISPLAY trip status
+
+
+                      ELSE:
+                         DISPLAY ”Bus operator not found”
+
+
+             # FEATURE 2
+             ELIF feature_choice == “2”:
+                WHILE TRUE: 
+                      INPUT destination         #(0 to exit)
+                      IF destination == “0”
+                         BREAK
+
+
+                      Found_destination = FALSE
+                      FOR trip_item in current_transport_list:
+                         IF destination in data base:
+                             Found_destination= TRUE
+                             BREAK
+
+
+                      IF Found_destination:
+                         DISPLAY trip data
+
+
+                      ELSE:
+                         DISPLAY ”Destination not found”
+
+
+             # FEATURE 3
+             ELIF feature_choice == “3”:
+                WHILE TRUE: 
+                      INPUT city        #(0 to exit)
+                      IF city == “0”
+                         BREAK
+
+
+                      Found_city = FALSE
+                      FOR trip_item in current_transport_list:
+                         IF Found_city in data base:
+                             Found_city = TRUE
+                             DISPLAY city schedule
+
+
+                      IF not Found_city:
+                         DISPLAY ”No trips found for this city.”
+
+
+             # FEATURE 4
+             ELIF feature_choice == “4”:
+                WHILE TRUE: 
+                      INPUT trip_id        #(0 to exit)
+                      IF trip_id == “0”
+                         BREAK
+
+
+                      Found_trip  = FALSE
+                      FOR trip_item in current_transport_list:
+                         IF Found_trip in database:
+                             Found_trip = TRUE
+                             DISPLAY fares
+
+
+                      IF not Found_trip:
+                         DISPLAY ”Trip ID not found.”
+     
+             # FEATURE 5
+             ELIF feature_choice == “5”:
+                WHILE TRUE: 
+                      INPUT trip_id        #(0 to exit)
+                      IF trip_id == “0”
+                         BREAK
+
+
+                      Found_trip  = FALSE
+                      FOR trip_item in current_transport_list:
+                         IF Found_trip in data base:
+                             Found_trip = TRUE
+                             DISPLAY bus details
+
+
+                      IF not Found_trip:
+                         DISPLAY ”Trip ID not found.”
+
+
+             ELSE:
+                DISPLAY “Invalid choice. Please enter a number from 1 to 6”
+
+
+    ELSE:
+        DISPLAY “Invalid choice. Please enter a number from 1 to 6”
+
+
+END
